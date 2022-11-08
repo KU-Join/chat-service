@@ -1,1 +1,8 @@
+kafka:
+  bootstrapAddress: localhost:9092
+  groupId: hw
 
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
