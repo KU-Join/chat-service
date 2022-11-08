@@ -3,6 +3,44 @@ kafka:
   groupId: hw
 
 spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ENC(Iq14DHDGHDl8YGB5UgR8UpybKiUtv9av99zYZrPIKQ7vzdFeYKbHfhDflMB7+tnBviruklMzJHuLG1ucYloYQQ0Nkixro5XCEYv3QsaQL9+ZmcoMTIAopAqRECudPDdZh3QesmwBjEKp+VmOwGtUjk2DZJiwNkam)
+    username: ENC(543keyU2WYIX3oKpe619+A==)
+    password: ENC(qtuptsSIL4QUw9mRAzsFhQ==)
+  jpa:
+    hibernate:
+      ddl-auto: update
   kafka:
     consumer:
       auto-offset-reset: earliest
+  application:
+    name: chat-service
+  rabbitmq:
+    host: 54.180.68.142
+    port: 5672
+    username: ENC(543keyU2WYIX3oKpe619+A==)
+    password: ENC(MaEeqzxC+Thoe8zl8/ttCg==)
+  zipkin:
+    base-url: http://54.180.68.142:9411
+    enabled: true
+  sleuth:
+    sampler:
+      probability: 1.0
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true
+    ip-address: 3.39.58.47
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://54.180.68.142:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, refresh, health, beans
